@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PM3Events.Api": {
+      "commandName": "Project",
+      "commandLineArgs": "--target PM3Events.Api.GetEventById\r\n"
+    }
+  }
+}

@@ -6,16 +6,16 @@ using Google.Cloud.Functions.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using PM3Events.Api.Authentication;
 using PM3Events.Api.Extensions;
-using PM3Events.Api.Utilities;
+using PM3Events.Api.Core;
+using PM3Events.Api.Core.Utilities;
 using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace PM3Events.Api
 {
-    [FunctionsStartup(typeof(Startup))]
+    [FunctionsStartup(typeof(PM3EventsApiStartup))]
     public class GetEventById : IHttpFunction
     {
         private readonly ILogger _logger;

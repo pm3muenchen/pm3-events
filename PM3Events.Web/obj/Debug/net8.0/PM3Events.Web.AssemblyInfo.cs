@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PM3Events.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+caad3d341fe2ca6051952996f7a820f3833d1e03")]
 [assembly: System.Reflection.AssemblyProductAttribute("PM3Events.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PM3Events.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

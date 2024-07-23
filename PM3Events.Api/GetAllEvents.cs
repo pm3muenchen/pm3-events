@@ -5,12 +5,15 @@ using Google.Apis.Requests;
 using Google.Apis.Services;
 using Google.Cloud.Functions.Framework;
 using Microsoft.AspNetCore.Http;
-using PM3Events.Api.Authentication;
-using PM3Events.Api.Utilities;
 using System.Threading.Tasks;
+using PM3Events.Api.Core;
+using PM3Events.Api.Core.Utilities;
+using Microsoft.AspNetCore.Mvc;
+using Google.Cloud.Functions.Hosting;
 
 namespace PM3Events.Api
 {
+    [FunctionsStartup(typeof(PM3EventsApiStartup))]
     public class GetAllEvents : IHttpFunction
     {
         /// <summary>
@@ -18,6 +21,7 @@ namespace PM3Events.Api
         /// </summary>
         /// <param name="context">The HTTP context, containing the request and the response.</param>
         /// <returns>A task representing the asynchronous operation.</returns>
+        [HttpGet]
         public async Task HandleAsync(HttpContext context)
         {
             try

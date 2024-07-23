@@ -8,30 +8,23 @@ namespace PM3Events.Api.Extensions
     internal class RequestMethodMiddleware
     {
         private readonly RequestDelegate _next;
-        private readonly string _functionTargetName;
+        private readonly Type? _functionTargetType;
 
-        public RequestMethodMiddleware(RequestDelegate next, string functionTargetName = "")
+        public RequestMethodMiddleware(RequestDelegate next, Type? functionTargetType = null)
         {
             _next = next;
-            _functionTargetName = functionTargetName;
+            _functionTargetType = functionTargetType;
         }
 
         public async Task InvokeAsync(HttpContext context)
         {
-            if (string.IsNullOrEmpty(_functionTargetName))
+            if (_functionTargetType is null)
             {
                 await _next(context);
                 return;
             }
 
-            var functionTarget = Type.GetType(_functionTargetName);
-            if (functionTarget is null)
-            {
-                await _next(context);
-                return;
-            }
-
-            var handleMethodInfo = functionTarget.GetMethod("HandleAsync");
+            var handleMethodInfo = _functionTargetType.GetMethod("HandleAsync");
             var httpMethodAttrs = handleMethodInfo.GetCustomAttributes<HttpMethodAttribute>().ToList();
             if (httpMethodAttrs.Count == 0)
             {

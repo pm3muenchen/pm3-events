@@ -1,5 +1,3 @@
-using Microsoft.Extensions.Hosting.Internal;
-using Microsoft.AspNetCore.Hosting;
 using PM3Events.Core;
 using PM3Events.Core.Services;
 using PM3Events.Core.Services.Interfaces;

@@ -103,3 +103,12 @@
         overflow-y: auto;
     }
 }
+
+@media screen and (min-width: 1440px) and (max-width: 1919px) {
+}
+
+@media screen and (min-width: 768px) and (max-width: 1439px) {
+}
+
+@media screen and (max-width: 767px) {
+}

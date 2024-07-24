@@ -1,0 +1,62 @@
+﻿@rendermode InteractiveServer
+@using Radzen.Blazor.Rendering;
+
+<RadzenPanel AllowCollapse="true" Style="width: 100%; max-height: 100%;"
+             Expand="OnExpand" Collapse="OnCollapse">
+    <HeaderTemplate>
+        <h3 class="section-title">@Title</h3>
+    </HeaderTemplate>
+    <ChildContent>
+        <div class="@GetCssClass()">
+            @foreach (var ev in Events)
+            {
+                <EventListItem Event="ev" />
+            }
+
+            @if (Events?.Count() == 0)
+            {
+                <span class="no-event-info-text">There are no ongoing events</span>
+            }
+        </div>
+    </ChildContent>
+    <SummaryTemplate>
+        <span class="summary-info-text rz-mx-auto">@Events?.Count() Events</span>
+    </SummaryTemplate>
+</RadzenPanel>
+
+@code {
+    [Parameter]
+    public string Title 
+    { 
+        get => string.IsNullOrEmpty(title) ? "Events" : title;
+        set => title = value; 
+    }
+    private string title = string.Empty;
+
+    [Parameter]
+    public IEnumerable<Event>? Events { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> IsCollapse { get; set; }
+
+    private bool expanded = true;
+
+    private async Task OnCollapse()
+    {
+        expanded = false;
+        await IsCollapse.InvokeAsync(true);
+    }
+
+    private async Task OnExpand()
+    {
+        expanded = true;
+        await IsCollapse.InvokeAsync(false);
+    }
+
+    private string GetCssClass()
+    {
+        return ClassList.Create("list-container").Add("expanded", expanded == true)
+                                             .Add("no-events", Events?.Count() == 0)
+                                             .ToString();
+    }
+}

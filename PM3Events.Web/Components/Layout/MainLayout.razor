@@ -1,19 +1,32 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+@using Radzen.Blazor.Rendering;
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+<RadzenComponents @rendermode="InteractiveServer" />
+<div class="page">
+    <Sidebar AppName="@appName" AppLogo="@appLogo" />
+
+    <main id="main-body" class="main-container">
+        <div class="top-row">
+            <div class="page-title">
+                <LayoutTitleOutlet />
+            </div>            
+            <div class="search-section">
+                <SearchEvents />
+            </div>
+            <div class="add-events">
+                <RadzenButton Disabled="true" Text="New Event" Icon="add" ButtonStyle="ButtonStyle.Primary" style="width: 100%; height: 100%; box-sizing: border-box;" />
+            </div>
+            <div class="profile-widget-section">
+                <ProfileWidget />
+            </div>
         </div>
 
         <article class="content px-4">
             @Body
         </article>
     </main>
+
 </div>
 
 <div id="blazor-error-ui">
@@ -21,3 +34,12 @@
     <a href="" class="reload">Reload</a>
     <a class="dismiss">🗙</a>
 </div>
+
+@code {
+    [Inject]
+    public IJSRuntime JSRuntime { get; set; }
+
+
+    private const string appName = "Events";
+    private const string appLogo = "/images/logo-yellow.svg";
+}

@@ -1,0 +1,24 @@
+﻿@rendermode InteractiveServer
+
+<div class="@GetCssClass()" style="@GetStyle()">
+    <div class="container sidebar-top-container">
+        <img class="logo" src="@AppLogo" aria-label="PM3 Logo" height="@(Expanded ? 64 : 32)"/>
+        <h2 class="logo-text">@AppName</h2>
+    </div>
+    <span class="sidebar-toggler" @onclick="ToggleSidebar">
+        <i class="rzi">@(Expanded ? CollapseIcon : ExpandIcon)</i>
+    </span>
+
+    <div class="sidebar-top-line"></div>
+
+    <div class="container sidebar-navlinks-container">
+        @foreach (PM3Events.Web.ViewModels.NavLink navLink in NavLinks) 
+        {
+            <div class="navlink-row" @onclick="@(_ => NavigateTo(navLink.Url))">
+                <i class="rzi navlink-logo">@navLink.Icon</i>
+                <label class="navlink-label">@navLink.Label</label>
+            </div>
+        }
+    </div>
+    
+</div>

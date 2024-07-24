@@ -1,0 +1,8 @@
+﻿@rendermode InteractiveServer
+
+<i class="rzi search-events-icon @(disabled ? "disabled" : "")">search</i>
+<RadzenAutoComplete Disabled="@disabled" Placeholder="Search event..." class="search-events" style="width: 100%; height: 100%; border-radius: 10px;" />
+
+@code {
+    private bool disabled = true;
+}

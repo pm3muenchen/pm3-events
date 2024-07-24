@@ -1,0 +1,44 @@
+﻿.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 14px;
+    height: 100%;
+}
+
+.dashboard-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 14px;
+    height: 100%;
+}
+
+.dashboard-row > * {
+    flex: 0 1 auto;
+}
+
+.dashboard-row .scheduler,
+.dashboard-row .events-list {
+    height: calc(100vh - 125px);
+}
+
+.dashboard-row .scheduler {
+    flex: 1 1 70%;
+}
+
+.dashboard-row .events-list {
+    flex: 0 1 25%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 14px;
+}
+
+.events-list .ongoing-event-list,
+.events-list .upcoming-event-list {
+    width: 100%;
+}
+
+.card-title {
+    font-family: var(--body-text-font-family);
+    font-size: 18px;
+}

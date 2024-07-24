@@ -1,0 +1,36 @@
+﻿.event-image-container,
+.event-info-container {
+    min-height: 64px;
+}
+
+.event-image-container {
+    flex: 0 1 35%;
+}
+
+.event-info-container {
+    flex: 0 1 65%;
+    display: flex;
+    flex-direction: column;
+    margin: .5rem;
+}
+
+.event-info-container .event-info-location {
+    font-size: 10px;
+    color: var(--primary-lighter-40-color);
+}
+
+.event-info-container .event-info-name {
+    margin: 0;
+    font-size: 16px;
+}
+
+.event-info-container .event-info-datetime {
+    font-size: 11px;
+    color: var(--primary-color);
+}
+
+.event-info-container .event-info-line {
+    box-sizing: border-box;
+    margin: .25rem 0 .5rem 0;
+    border-top: 1px solid var(--rz-base-300);
+}

@@ -42,6 +42,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/handy/Projects/PM3/Events/PM3Events/PM3Events.Web/Components/Shared/ProfileWidget.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTaGFyZWRcUHJvZmlsZVdpZGdldC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/handy/Projects/PM3/Events/PM3Events/PM3Events.Web/Components/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -53,3 +57,23 @@ build_metadata.AdditionalFiles.CssScope = b-ht5likor3u
 [C:/Users/handy/Projects/PM3/Events/PM3Events/PM3Events.Web/Components/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-gsmywcjirs
+
+[C:/Users/handy/Projects/PM3/Events/PM3Events/PM3Events.Web/Components/Layout/Sidebar.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcU2lkZWJhci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-y5cu0roczy
+
+[C:/Users/handy/Projects/PM3/Events/PM3Events/PM3Events.Web/Components/Pages/Dashboard.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xEYXNoYm9hcmQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-1roznl96p0
+
+[C:/Users/handy/Projects/PM3/Events/PM3Events/PM3Events.Web/Components/Shared/Events/EventListItem.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTaGFyZWRcRXZlbnRzXEV2ZW50TGlzdEl0ZW0ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-k9bmzlpx2l
+
+[C:/Users/handy/Projects/PM3/Events/PM3Events/PM3Events.Web/Components/Shared/Events/EventsList.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTaGFyZWRcRXZlbnRzXEV2ZW50c0xpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-szoewzsw90
+
+[C:/Users/handy/Projects/PM3/Events/PM3Events/PM3Events.Web/Components/Shared/SearchEvents.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTaGFyZWRcU2VhcmNoRXZlbnRzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-09mqvv9svy

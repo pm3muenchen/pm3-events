@@ -10,6 +10,7 @@ using PM3Events.Api.Core;
 using PM3Events.Api.Core.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using Google.Cloud.Functions.Hosting;
+using System.Collections.Generic;
 
 namespace PM3Events.Api
 {
@@ -42,7 +43,7 @@ namespace PM3Events.Api
 
                 var events = ((IClientServiceRequest<Events>)requestListEvents).Execute();
 
-                await context.Response.WriteAsJsonAsync(events);
+                await context.Response.WriteAsJsonAsync(events is not null ? events.Items : new List<Event>());
             }
             catch (GoogleApiException ex)
             {

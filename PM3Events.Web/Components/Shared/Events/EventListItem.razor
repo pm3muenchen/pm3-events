@@ -1,0 +1,18 @@
+﻿@rendermode InteractiveServer
+
+<RadzenCard Variant="@Variant.Outlined" Class="event-list-item" Style="width: 100%; display: flex; flex-direction: row; padding: 0;">
+    <div class="event-image-container">
+        <RadzenImage Path="images/default_event_image.png" Style="width: 100%; height: 100%; border-top-left-radius: 5px; border-bottom-left-radius: 5px;" AlternateText="community" />
+    </div>
+    <div class="event-info-container">
+        <h5 class="event-info-name">@Event?.Summary</h5>
+        <div class="event-info-line"></div>
+        <p class="event-info-datetime">@Event?.StartDateTime.ToString("yyyy-MM-dd HH:mm") - @Event?.EndDateTime.ToString("yyyy-MM-dd HH:mm")</p>
+        <p class="event-info-location">@(Event?.Location ?? "no info")</p>
+    </div>
+</RadzenCard>
+
+@code {
+    [Parameter]
+    public Event? Event { get; set; }
+}

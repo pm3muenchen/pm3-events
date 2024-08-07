@@ -1,0 +1,9 @@
+﻿.search-events-icon {
+    position: absolute;
+    margin-left: 15px;
+}
+
+.search-events-icon.disabled {
+    color: var(--rz-base-400);
+    cursor: not-allowed;
+}

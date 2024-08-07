@@ -1,0 +1,159 @@
+﻿@page "/dashboard"
+
+@using Radzen.Blazor.Rendering;
+@inject DialogService DialogService
+@inject IEventService EventService
+@inject LocalStorageAccessor LocalStorage
+
+<PageTitle>Dashboard</PageTitle>
+@* <LayoutTitle>Dashboard</LayoutTitle> *@
+
+<div class="dashboard-container">
+    <div class="dashboard-row">
+        <div class="scheduler">
+            <RadzenCard Variant="@Variant.Filled" Style="width: 100%; height: 100%;">
+                @if (isLoaded)
+                {
+                    <RadzenScheduler @ref=@scheduler SlotRender=@OnSlotRender TItem="Event" Data=@events StartProperty="StartDateTime" EndProperty="EndDateTime"
+                                     TextProperty="Summary" SelectedIndex="2" style="height: 100%;"
+                                     SlotSelect=@OnSlotSelect AppointmentSelect=@OnAppointmentSelect AppointmentRender=@OnAppointmentRender
+                                     AppointmentMove=@OnAppointmentMove>
+                        <RadzenDayView />
+                        <RadzenWeekView />
+                        <RadzenMonthView />
+                        <RadzenYearView />
+                    </RadzenScheduler>
+                }
+                else
+                {
+                    <p class="loading-text">Loading...</p>
+                }
+            </RadzenCard>            
+        </div>
+        <div class="@GetEventsListCssClass()">
+            <div class="ongoing-event-list">
+                <EventsList Title="Ongoing Events" Events="ongoingEvents" IsCollapse="CountExpandedPanel" />
+            </div>
+            <div class="upcoming-event-list">
+                <EventsList Title="Upcoming Events" Events="upcomingEvents" IsCollapse="CountExpandedPanel" />
+            </div>
+        </div>
+    </div>    
+</div>
+
+@code {
+    RadzenScheduler<Event> scheduler;
+    IList<Event>? events = new List<Event>();
+    private bool isLoaded;
+    private int countExpandedEventsList = 2;
+
+    private IList<Event> ongoingEvents
+    {
+        get
+        {
+            var dateTimeNow = DateTime.Now;
+            var result = events is not null ? events.Where(e => e.StartDateTime <= dateTimeNow && e.EndDateTime >= dateTimeNow) : new List<Event>();
+            Console.WriteLine($"Ongoing Events: {result.Count()}");
+            return result.ToList();
+        }
+    }
+
+    private IList<Event> upcomingEvents
+    {
+        get
+        {
+            var upcomingDateTime = DateTime.Now.AddDays(1);
+            var result = events is not null ? events.Where(e => e.StartDateTime >= upcomingDateTime) : new List<Event>();
+            Console.WriteLine($"Upcoming Events: {result.Count()}");
+            return result.ToList();
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await LoadStateAsync();
+            StateHasChanged();
+        }
+    }
+
+    void OnSlotRender(SchedulerSlotRenderEventArgs args)
+    {
+        // Highlight today in month view
+        if (args.View.Text == "Month" && args.Start.Date == DateTime.Today)
+        {
+            args.Attributes["style"] = "background: rgba(255,220,40,.2);";
+        }
+
+        // Highlight working hours (9-18)
+        if ((args.View.Text == "Week" || args.View.Text == "Day") && args.Start.Hour > 8 && args.Start.Hour < 19)
+        {
+            args.Attributes["style"] = "background: rgba(255,220,40,.2);";
+        }
+    }
+
+    async Task OnSlotSelect(SchedulerSlotSelectEventArgs args)
+    {
+        if (args.View.Text != "Year")
+        {
+
+        }
+    }
+
+    async Task OnAppointmentSelect(object args)
+    {
+
+    }
+
+    void OnAppointmentRender(SchedulerAppointmentRenderEventArgs<Event> args)
+    {
+        // Never call StateHasChanged in AppointmentRender - would lead to infinite loop
+
+    }
+
+    async Task OnAppointmentMove(SchedulerAppointmentMoveEventArgs args)
+    {
+
+    }
+
+    private async Task LoadStateAsync()
+    {
+        await LoadEventsAsync();
+        isLoaded = true;
+    }
+
+    private async Task LoadEventsAsync()
+    {
+        var result = await LocalStorage.GetValueAsync<List<Event>>("events");
+        events = result is not null ? result : (await EventService.GetEventsAsync()).ToList();
+
+        if (result is null)
+        {
+            await LocalStorage.SetValueAsync("events", events);
+        }
+    }
+
+    private void CountExpandedPanel(bool collapsed)
+    {
+        if (collapsed)
+        {
+            countExpandedEventsList--;
+        }
+        else
+        {
+            countExpandedEventsList++;
+        }
+        Console.WriteLine($"Expanded Panel: {countExpandedEventsList}");
+    }
+
+    private string GetEventsListCssClass()
+    {
+        return ClassList.Create("events-list").Add("no-expanded", countExpandedEventsList == 0)
+                                                 .Add("one-expanded", countExpandedEventsList == 1)
+                                                 .Add("two-expanded", countExpandedEventsList == 2)
+                                                 .Add("one-empty", ongoingEvents.Count == 0 || upcomingEvents.Count == 0)
+                                                 .Add("no-empty", ongoingEvents.Count > 0 && upcomingEvents.Count > 0)
+                                                 .ToString();
+    }
+}

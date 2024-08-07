@@ -1,0 +1,445 @@
+﻿.sidebar {
+    position: -webkit-sticky;
+    position: sticky;
+    display: block;
+    background-color: var(--rz-sidebar-background-color);
+    color: var(--black-color);
+    border-right: var(--rz-sidebar-border-right);
+    box-shadow: var(--rz-card-shadow);
+    top: 0;
+    left: 0;
+    z-index: var(--rz-sidebar-z);
+    opacity: 1;
+    transition: var(--rz-transition-all);
+}
+
+.sidebar-collapsed {
+    height: 64px;
+}
+
+.sidebar-top-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 64px;
+    box-sizing: border-box;
+}
+
+.sidebar-top-container .logo {
+    height: 48px;
+    padding-right: .5rem;
+}
+
+.sidebar-top-container .logo-text {
+    margin: 0;
+    line-height: 48px;
+    font-size: 1.75rem;
+    letter-spacing: -1px;
+    color: var(--black-color);
+}
+
+.sidebar-collapsed .sidebar-top-container .logo-text {
+    
+}
+
+.sidebar-toggler,
+.topbar-toggler {
+    position: absolute;
+    right: var(--bs-gutter-x,.75rem);
+    font-size: 32px;
+    color: var(--black-color);
+    cursor: pointer;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-toggler {
+    top: 20px;
+    display: none;
+}
+
+.topbar-toggler {
+    top: 8px;
+    width: 48px;
+}
+
+.sidebar-toggler:hover,
+.topbar-toggler:hover {
+    border-radius: 5px;
+    background-color: var(--rz-base-200);
+}
+
+.sidebar-top-line {
+    display: none;
+    box-sizing: border-box;
+    margin: 1rem var(--bs-gutter-x, .75rem);
+    border-top: 1px solid var(--rz-base-300);
+}
+
+.sidebar-navlinks-container {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    margin-top: 1.75rem;
+    margin-bottom: 1.75rem;
+}
+
+.sidebar-navlinks-container .navlink-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+}
+
+.sidebar-navlinks-container .navlink-row:hover {
+    background-color: var(--rz-base-100);
+}
+
+.sidebar-expanded .sidebar-navlinks-container .navlink-row {
+    justify-content: flex-start;
+}
+
+.sidebar-collapsed .sidebar-navlinks-container .navlink-row {
+    justify-content: center;
+}
+
+.navlink-row .navlink-logo {
+    color: var(--primary-color);
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+.navlink-row:hover .navlink-logo {
+    color: rgba(150, 27, 32, 0.75);
+}
+
+
+.sidebar-expanded .sidebar-navlinks-container {
+    display: flex;
+}
+
+.sidebar-expanded .navlink-row .navlink-label {
+    display: inline-block;
+    line-height: 32px;
+    font-size: 16px;
+    padding-left: 8px;
+    cursor: pointer;
+}
+
+
+.sidebar-collapsed .sidebar-navlinks-container {
+    display: none;
+}
+
+.sidebar-collapsed .navlink-row .navlink-label {
+    display: none;
+}
+
+.navlink-row-separator {
+    margin: 7.5px 0;
+    height: 1.33px;
+    background-color: var(--secondary-lighter-color);
+}
+
+/*X-Small devices (portrait phones, less than 576px)*/
+/*No media query for `xs` since this is the default in Bootstrap*/
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+    .sidebar-navlinks-container {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+    .sidebar {
+        height: 100vh;
+        padding-top: 12px;
+        position: sticky;
+    }
+
+    .sidebar-top-container {
+        min-height: 48px;
+    }
+
+    .sidebar-expanded {
+        width: 20vw;
+    }
+
+    .sidebar-expanded .sidebar-top-container {
+        padding-right: 36px;
+    }
+
+    .sidebar-expanded .sidebar-top-container .logo {
+        height: 32px;
+    }
+
+    .sidebar-expanded .sidebar-top-container .logo-text {
+        font-size: 1.25rem;
+    }
+
+    .sidebar-collapsed {
+        width: 56px !important;
+    }
+
+    .sidebar-collapsed .sidebar-top-container {
+        justify-content: center;
+        margin-top: 48px;
+        min-height: 32px;
+    }
+
+    .sidebar-collapsed .sidebar-top-container .logo {
+        width: 28px;
+        height: 28px;
+        padding-right: 0;
+    }
+
+    .sidebar-top-container .logo-text {
+        margin: 0;
+        padding: 0;
+        line-height: 32px;
+        font-size: 1.25rem;
+        letter-spacing: -1px;
+        color: var(--black-color);
+    }
+
+    .sidebar-collapsed .sidebar-top-container .logo-text {
+        display: none;
+    }
+
+    .topbar-toggler {
+        display: none;
+    }
+
+    .sidebar-toggler {
+        display: flex;
+        top: 12px;
+    }
+
+    .sidebar-expanded .sidebar-toggler {
+        line-height: 48px;
+        text-align: left;
+    }
+
+    .sidebar-collapsed .sidebar-toggler {
+        line-height: 32px;
+        width: 32px;
+        height: 32px;
+        text-align: center;
+    }
+
+    .sidebar-top-line {
+        display: block;
+    }
+
+    .sidebar-navlinks-container {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .navlink-row .navlink-logo {
+        font-size: 28px;
+        width: 28px;
+        height: 28px;
+    }
+
+    .sidebar-expanded .navlink-row .navlink-label {
+        line-height: 28px;
+        font-size: 14px;
+        padding-left: 6px;
+    }
+
+    .navlink-row.login,
+    .navlink-row-separator.login {
+        display: none;
+    }
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+    
+}
+
+/*X-Large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+    .sidebar {
+        position: relative;
+    }
+
+    .sidebar-expanded {
+        width: 17vw;
+    }
+
+    .sidebar-top-container {
+        min-height: 64px;
+    }
+
+    .sidebar-expanded .sidebar-top-container {
+        padding-right: 36px;
+    }
+
+    .sidebar-expanded .sidebar-top-container .logo {
+        height: 48px;
+    }
+
+    .sidebar-expanded .sidebar-top-container .logo-text {
+        font-size: 1.75rem;
+    }
+
+    .sidebar-collapsed {
+        width: 64px !important;
+    }
+
+    .sidebar-collapsed .sidebar-top-container {
+        justify-content: center;
+        margin-top: 48px;
+        min-height: 32px;
+    }
+
+    .sidebar-collapsed .sidebar-top-container .logo {
+        width: 32px;
+        height: 32px;
+        padding-right: 0;
+    }
+
+    .sidebar-top-container .logo-text {
+        margin: 0;
+        padding: 0;
+        line-height: 48px;
+        font-size: 1.75rem;
+        letter-spacing: -1px;
+        color: var(--black-color);
+    }
+
+    .sidebar-collapsed .sidebar-top-container .logo-text {
+        display: none;
+    }
+
+    .topbar-toggler {
+        display: none;
+    }
+
+    .sidebar-toggler {
+        display: flex;
+        top: 20px;
+    }
+
+    .sidebar-expanded .sidebar-toggler {
+        line-height: 48px;
+        text-align: left;
+    }
+
+    .sidebar-collapsed .sidebar-toggler {
+        line-height: 32px;
+        width: 32px;
+        height: 32px;
+        text-align: center;
+    }
+
+    .sidebar-top-line {
+        display: block;
+    }
+
+    .sidebar-navlinks-container {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .navlink-row .navlink-logo {
+        font-size: 32px;
+        width: 32px;
+        height: 32px;
+    }
+
+    .sidebar-expanded .navlink-row .navlink-label {
+        line-height: 32px;
+        font-size: 16px;
+        padding-left: 8px;
+    }
+}
+
+/*XX-Large devices (larger desktops, 1400px and up)*/
+@media (min-width: 1400px) {
+    .sidebar {
+        height: 100vh;
+        padding-top: 12px;
+    }
+
+    .sidebar-expanded {
+        width: 12vw;
+    }
+
+    .sidebar-expanded .sidebar-top-container {
+        padding-right: 36px;
+    }
+
+    .sidebar-collapsed {
+        width: 64px !important;
+    }
+
+    .sidebar-collapsed .sidebar-top-container {
+        justify-content: center;
+        margin-top: 48px;
+        min-height: 32px;
+        flex-wrap: wrap;
+    }
+
+    .sidebar-collapsed .sidebar-top-container .logo {
+        width: 32px;
+        height: 32px;
+        padding-right: 0;
+    }
+
+    .sidebar-top-container .logo-text {
+        margin: 0;
+        line-height: 48px;
+        font-size: 1.75rem;
+        letter-spacing: -1px;
+        color: var(--black-color);
+    }
+
+    .sidebar-collapsed .sidebar-top-container .logo-text {
+        display: none;
+    }
+
+    .topbar-toggler {
+        display: none;
+    }
+
+    .sidebar-toggler {
+        display: flex;
+    }
+
+    .sidebar-expanded .sidebar-toggler {
+        line-height: 48px;
+        text-align: left;
+    }
+
+    .sidebar-collapsed .sidebar-toggler {
+        line-height: 32px;
+        width: 32px;
+        height: 32px;
+        text-align: center;
+    }
+
+    .sidebar-top-line {
+        display: block;
+    }
+
+    .sidebar-navlinks-container {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .sidebar-expanded .navlink-row .navlink-label {
+        font-size: 18px;
+    }
+}

@@ -1,0 +1,30 @@
+﻿@using Radzen.Blazor.Rendering
+
+<RadzenCard Variant="@Variant.Filled" Style="width: 100%; height: 64px;">
+    <RadzenImage Path="/images/default_profile_image.png" Style="width: 32px; height: 32px; border-radius: 50%; margin-right: 12px;" />
+    <RadzenButton @ref=button Icon="more_vert" Variant="Variant.Text" ButtonStyle="ButtonStyle.Primary" Click="ClickProfileBtn" />
+</RadzenCard>
+
+<Popup @ref=popup Lazy=true class="profile-widget-popup"
+    Style="display:none;position:absolute;height:84px;width:200px;padding:10px 0;border:var(--rz-panel-border);background-color:var(--rz-panel-background-color);">
+    
+    <ul style="width: 100%;">
+        <li><i class="rzi profile-widget-icon">assignment</i>Sign up</li>
+        <li><i class="rzi profile-widget-icon">login</i>Log in</li>
+    </ul>
+</Popup>
+
+@code {
+    private bool loggedIn = false;
+
+    RadzenButton button;
+    Popup popup;
+
+    private void ClickProfileBtn()
+    {
+        if (!loggedIn)
+        {
+            popup.ToggleAsync(button.Element);
+        }
+    }
+}

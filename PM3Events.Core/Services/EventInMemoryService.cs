@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using PM3Events.Core.Services.Interfaces;
+using System.Reflection;
 
 namespace PM3Events.Core.Services
 {
@@ -23,7 +24,9 @@ namespace PM3Events.Core.Services
         {
             if (_events == null)
             {
-                var eventsJson = await File.ReadAllTextAsync(@"Data" + Path.DirectorySeparatorChar + "events-inmemory.json");
+                var currentDir = Path.GetFullPath(Directory.GetCurrentDirectory());
+                var filePath = Path.GetFullPath(currentDir + ".." + Path.DirectorySeparatorChar + "Data" + Path.DirectorySeparatorChar + "events-inmemory.json");
+                var eventsJson = await File.ReadAllTextAsync(filePath);
                 _events = JsonConvert.DeserializeObject<List<Event>>(eventsJson);
             }            
         }
